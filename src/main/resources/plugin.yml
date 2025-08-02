@@ -1,0 +1,7 @@
+name: GUILib
+main: net.heeheehub.utility.guilib.GUILib.GUILib
+version: 1.0
+author: NaphonJangjit
+commands:
+  testgui:
+    permission: guilib.test

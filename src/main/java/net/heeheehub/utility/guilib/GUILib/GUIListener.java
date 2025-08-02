@@ -10,6 +10,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryCloseEvent;
+import org.bukkit.event.player.PlayerQuitEvent;
 
 class GUIListener implements Listener{
 	
@@ -30,6 +31,11 @@ class GUIListener implements Listener{
 	@EventHandler
 	public void onInventoryClose(InventoryCloseEvent event) {
 		openGUIs.remove(event.getPlayer().getUniqueId());
+	}
+	
+	@EventHandler
+	public void onPlayerQuit(PlayerQuitEvent event) {
+		openGUIs.remove(event.getPlayer().getUniqueId()); //for sure
 	}
 	
 	public void track(Player player, GUI gui) {
