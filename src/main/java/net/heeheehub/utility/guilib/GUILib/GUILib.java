@@ -34,7 +34,7 @@ public class GUILib extends JavaPlugin {
 					return true;
 				}
 				
-				GUI test = new GUI(9 * 3, "&aTest &bGUI").setItem(13, new ItemStack(Material.DIAMOND), p -> {
+				GUI test = new GUI(3, "&aTest &bGUI").setItem(13, new ItemStack(Material.DIAMOND), p -> {
 					Player clicker = (Player)p.getWhoClicked();
 					clicker.getInventory().addItem(new ItemStack(Material.DIAMOND, 64));
 				});
