@@ -24,7 +24,7 @@ class GUIListener implements Listener{
 		
 		if(gui != null && event.getClickedInventory() != null && event.getClickedInventory().equals(gui.getInventory())) {
 			event.setCancelled(true);
-			gui.handleClick(event.getSlot(), new GUIParams(event.getClick(), event.getCurrentItem(), he));
+			gui.handleClick(event.getSlot(), new GUIParams(event.getClick(), event.getCurrentItem(), he, gui));
 		}
 	}
 	

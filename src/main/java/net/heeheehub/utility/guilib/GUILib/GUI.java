@@ -73,7 +73,7 @@ public class GUI {
 		handlers.getOrDefault(slot, _ -> {}).accept(params);
 	}
 	
-	Inventory getInventory() {
+	public Inventory getInventory() {
 		return inventory;
 	}
 	
