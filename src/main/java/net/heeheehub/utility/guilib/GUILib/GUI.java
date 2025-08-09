@@ -6,6 +6,7 @@ import java.util.function.Consumer;
 
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
+import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
@@ -25,6 +26,10 @@ public class GUI {
 	
 	public GUI(int rows, String title) {
 		this.inventory = Bukkit.createInventory(null, rows * 9, ColorFormat.format2(title));
+	}
+	
+	public GUI(String title, InventoryType type) {
+		this.inventory = Bukkit.createInventory(null, type, ColorFormat.format2(title));
 	}
 	
 	public GUI setItem(int slot, ItemStack item, Consumer<GUIParams> event) {
