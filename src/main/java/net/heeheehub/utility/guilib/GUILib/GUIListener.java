@@ -32,7 +32,9 @@ class GUIListener implements Listener{
 	public void onInventoryClose(InventoryCloseEvent event) {
 		if(openGUIs.containsKey(event.getPlayer().getUniqueId())) {
 			GUI g = openGUIs.get(event.getPlayer().getUniqueId());
-			g.getOnCloseCons().accept(new GUIParams(null, null, event.getPlayer(), g));
+			if(g.getOnCloseCons() != null) {
+				g.getOnCloseCons().accept(new GUIParams(null, null, event.getPlayer(), g));
+			}
 		}
 		openGUIs.remove(event.getPlayer().getUniqueId());
 	}
