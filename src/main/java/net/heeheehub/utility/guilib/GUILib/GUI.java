@@ -9,6 +9,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
+import net.heeheehub.apihub.APIHub.utils.ColorFormat;
 import net.md_5.bungee.api.ChatColor;
 
 public class GUI {
@@ -23,7 +24,7 @@ public class GUI {
 	}
 	
 	public GUI(int rows, String title) {
-		this.inventory = Bukkit.createInventory(null, rows * 9, ChatColor.translateAlternateColorCodes('&', title));
+		this.inventory = Bukkit.createInventory(null, rows * 9, ColorFormat.format2(title));
 	}
 	
 	public GUI setItem(int slot, ItemStack item, Consumer<GUIParams> event) {
