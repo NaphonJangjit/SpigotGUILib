@@ -18,7 +18,7 @@ public class GUI {
 	
 	private final Inventory inventory;
 	private final Map<Integer, Consumer<GUIParams>> handlers = new HashMap<>();
-	
+	private Consumer<GUIParams> onCloseCons = null;
 	
 	static void setGUIListener(GUIListener listener) {
 		GUI.listener = listener;
@@ -79,8 +79,17 @@ public class GUI {
 		handlers.getOrDefault(slot, _ -> {}).accept(params);
 	}
 	
+	public GUI onClose(Consumer<GUIParams> p) {
+		this.onCloseCons = p;
+		return this;
+	}
+	
 	public Inventory getInventory() {
 		return inventory;
+	}
+	
+	public Consumer<GUIParams> getOnCloseCons() {
+		return onCloseCons;
 	}
 	
 	

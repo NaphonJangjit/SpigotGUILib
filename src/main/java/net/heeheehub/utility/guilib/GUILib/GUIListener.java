@@ -30,6 +30,10 @@ class GUIListener implements Listener{
 	
 	@EventHandler
 	public void onInventoryClose(InventoryCloseEvent event) {
+		if(openGUIs.containsKey(event.getPlayer().getUniqueId())) {
+			GUI g = openGUIs.get(event.getPlayer().getUniqueId());
+			g.getOnCloseCons().accept(new GUIParams(null, null, event.getPlayer(), g));
+		}
 		openGUIs.remove(event.getPlayer().getUniqueId());
 	}
 	
