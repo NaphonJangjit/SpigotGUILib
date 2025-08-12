@@ -59,7 +59,7 @@ public class GUI {
 	
 	public GUI setItem(int slot, ItemStack item) {
 		inventory.setItem(slot, item);
-		return this;
+		return setAction(slot, handlers.get(slot));
 	}
 	
 	public GUI setItems(ItemStack item, int... slots) {
