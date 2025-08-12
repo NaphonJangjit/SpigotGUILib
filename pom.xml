@@ -58,7 +58,7 @@
     <dependency>
 	    <groupId>com.github.NaphonJangjit</groupId>
 	    <artifactId>SpigotAPIHub</artifactId>
-	    <version>843e9dc</version>
+	    <version>2af65e5</version>
 	    <scope>provided</scope>
 	</dependency>
   </dependencies>
