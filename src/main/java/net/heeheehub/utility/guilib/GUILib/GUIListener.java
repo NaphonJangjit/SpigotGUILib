@@ -10,6 +10,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryCloseEvent;
+import org.bukkit.event.inventory.InventoryDragEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 
 class GUIListener implements Listener{
@@ -23,9 +24,29 @@ class GUIListener implements Listener{
 		GUI gui = openGUIs.get(player.getUniqueId());
 		
 		if(gui != null && event.getClickedInventory() != null && event.getClickedInventory().equals(gui.getInventory())) {
-			event.setCancelled(true);
+			event.setCancelled(gui.isCancelled(event.getSlot()));
 			gui.handleClick(event.getSlot(), new GUIParams(event.getClick(), event.getCurrentItem(), he, gui));
 		}
+	}
+	
+	@EventHandler
+	public void onInventoryDrag(InventoryDragEvent event) {
+	    HumanEntity he = event.getWhoClicked();
+	    if (!(he instanceof Player)) return;
+
+	    Player player = (Player) he;
+	    GUI gui = openGUIs.get(player.getUniqueId());
+
+	    if (gui != null && event.getInventory().equals(gui.getInventory())) {
+	        for (int slot : event.getRawSlots()) {
+	            if (slot < gui.getInventory().getSize()) {
+	                if (gui.isCancelled(slot)) {
+	                    event.setCancelled(true);
+	                    break;
+	                }
+	            }
+	        }
+	    }
 	}
 	
 	@EventHandler

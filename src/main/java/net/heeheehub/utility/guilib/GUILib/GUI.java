@@ -19,6 +19,7 @@ public class GUI {
 	private final Inventory inventory;
 	private final Map<Integer, Consumer<GUIParams>> handlers = new HashMap<>();
 	private Consumer<GUIParams> onCloseCons = null;
+	private final Map<Integer, Boolean> cancelled = new HashMap<Integer, Boolean>();
 	
 	static void setGUIListener(GUIListener listener) {
 		GUI.listener = listener;
@@ -35,6 +36,10 @@ public class GUI {
 	public GUI setItem(int slot, ItemStack item, Consumer<GUIParams> event) {
 		inventory.setItem(slot, item);
 		return setAction(slot, event);
+	}
+	
+	public void setCancelled(int slot, boolean b) {
+		cancelled.put(slot, b);
 	}
 	
 	public GUI setAction(int slot, Consumer<GUIParams> event) {
@@ -89,6 +94,10 @@ public class GUI {
 	
 	public Consumer<GUIParams> getOnCloseCons() {
 		return onCloseCons;
+	}
+	
+	public boolean isCancelled(int slot) {
+		return cancelled.getOrDefault(slot, true);
 	}
 	
 	
