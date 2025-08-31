@@ -25,7 +25,7 @@ class GUIListener implements Listener{
 		
 		if(gui != null && event.getClickedInventory() != null && event.getClickedInventory().equals(gui.getInventory())) {
 			event.setCancelled(gui.isCancelled(event.getSlot()));
-			gui.handleClick(event.getSlot(), new GUIParams(event.getClick(), event.getCurrentItem(), he, gui));
+			gui.handleClick(event.getSlot(), new GUIParams(event.getClick(), event.getCurrentItem(), he, gui, event));
 		}
 	}
 	
@@ -54,7 +54,7 @@ class GUIListener implements Listener{
 		if(openGUIs.containsKey(event.getPlayer().getUniqueId())) {
 			GUI g = openGUIs.get(event.getPlayer().getUniqueId());
 			if(g.getOnCloseCons() != null) {
-				g.getOnCloseCons().accept(new GUIParams(null, null, event.getPlayer(), g));
+				g.getOnCloseCons().accept(new GUIParams(null, null, event.getPlayer(), g, null));
 			}
 		}
 		openGUIs.remove(event.getPlayer().getUniqueId());
